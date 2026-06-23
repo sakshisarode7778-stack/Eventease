@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events - EventEase</title>
+
+  <!-- ✅ CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+  <!-- ✅ JS -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images1/logo2.png" alt="EventEase Logo">
+    </div>
+    <ul class="menu">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#gallery">Gallery</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!---event------>
+<section id="events" class="events-section">
+    <h1 class="events-title">Explore Our Events</h1>
+
+    <p class="subtitle events-subtitle">
+  Find the perfect event type and connect with expert organizers effortlessly.
+</p>
+    
+<div class="event-stats">
+  <div><h3>50+</h3><p>Events</p></div>
+  <div><h3>100+</h3><p>Organizers</p></div>
+  <div><h3>1000+</h3><p>Happy Clients</p></div>
+</div>
+
+
+    <!-- Search Bar --> 
+     <div class="search-wrapper"> 
+      <input type="text" id="searchBox" placeholder="Search for an event type..." class="event-search">
+      <p id="noResults" style="display:none; color:#ccc; margin-top:20px;">
+  No events found 😔
+</p>
+    </div> 
+    
+     
+    <!-- Event Grid -->
+   <div class="events-container"> 
+
+
+    <div class="event-banner"> 
+      <img src="images1/live.jpeg" alt="Live Concert"> 
+      <span class="tag">Concert</span> 
+      <div class="title-text">Live Concert</div> 
+      <a href="live-details.html" class="details-btn">View Organizers</a> 
+    </div> 
+
+
+    <div class="event-banner"> 
+      <img src="images/birthday.jpeg" alt="Birthday Party"> 
+      <span class="tag">Party</span> 
+      <div class="title-text">Birthday Party</div> 
+      <a href="birthday-details.html" class="details-btn">View Organizers</a> 
+    </div> 
+
+
+    <div class="event-banner"> 
+      <img src="images1/wedding.jpg" alt="Wedding Event"> 
+      <span class="tag">Wedding</span> 
+      <div class="title-text">Wedding Event</div> 
+      <a href="wedding-details.html" class="details-btn">View Organizers</a> 
+    </div> 
+
+
+    <div class="event-banner"> 
+      <img src="images/corporate.jpeg" alt="Corporate Event"> 
+      <span class="tag">Business</span> 
+      <div class="title-text">Corporate Event</div> 
+      <a href="corporate-details.html" class="details-btn">View Organizers</a> 
+    </div> 
+    
+    
+    <div class="event-banner"> 
+      <img src="images1/private.jpg" alt="Private Parties"> 
+      <span class="tag">Private</span> 
+      <div class="title-text">Private Parties</div> 
+      <a href="private-details.html" class="details-btn">View Organizers</a> 
+    </div> 
+    
+    <div class="event-banner"> 
+      <img src="images1/music.jpeg" alt="Music Concert"> 
+      <span class="tag">Music</span> 
+      <div class="title-text">Music Concert</div> 
+      <a href="music-details.html" class="details-btn">View Organizers</a> 
+    </div> 
+    
+    <div class="event-banner"> 
+      <img src="images/baby-10.jpeg" alt="Baby Shower"> 
+      <span class="tag">Family</span> 
+      <div class="title-text">Baby Shower</div> 
+      <a href="baby-details.html" class="details-btn">View Organizers</a> 
+    </div> 
+    
+    <div class="event-banner"> 
+      <img src="images/an-2.jpg" alt="Anniversary"> 
+      <span class="tag">Celebration</span> 
+      <div class="title-text">Anniversary</div> 
+      <a href="anniversary-details.html" class="details-btn">View Organizers</a> 
+    </div> 
+  
+  </div>
+
+
+<div class="custom-event-section">
+  <h2>Can't find your event?</h2>
+  <p>Tell us what you need and we’ll connect you with the best organizers.</p>
+  
+  <button type="button" class="custom-event-btn" onclick="toggleForm()">
+    Create Your Own Event
+  </button>
+
+  <!-- Hidden Form -->
+  <div id="customForm" class="custom-form">
+    <form id="eventForm">
+  <input type="text" placeholder="Event Type" required>
+
+  <input type="email" placeholder="Email Address" required>
+
+  <input 
+  type="tel" 
+  placeholder="10-digit Mobile Number" 
+  pattern="[6-9]{1}[0-9]{9}" 
+  maxlength="10" 
+  required
+>
+
+  <input type="date" required>
+
+  <input type="text" placeholder="Location" required>
+
+  <input type="number" placeholder="Budget" required>
+
+  <textarea placeholder="Special Requirements"></textarea>
+
+  <button type="submit" class="submit-btn">Submit</button>
+</form>
+<p id="successMsg" style="display:none; color:#4caf50; margin-top:10px;">
+  ✅ Request submitted successfully!
+</p>
+  </div>
+</div>
+
+
+    <!-- Bottom Button -->
+    <div class="custom-btn-wrapper">
+        
+    </div>
+</section>
+<div class="verify-section">
+  <h2>Want to be listed?</h2>
+  <p>Verify yourself here to become an official EventEase organizer.</p>
+  <button class="verify-btn" onclick="openModal()">Verify Organizer</button>
+</div>
+
+<!-- Modal Popup -->
+<div id="verifyModal" class="modal">
+  <div class="modal-content large animate">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Organizer Verification</h2>
+    <form id="verifyForm">
+      
+      <!-- Row 1 -->
+      <div class="form-row">
+        <input type="text" placeholder="Organizer/Company Name" required>
+        <select id="eventCategory" name="category" required>
+          <option value="">Event Category</option>
+          <option value="concert">Concert</option>
+          <option value="wedding">Wedding</option>
+          <option value="corporate">Corporate</option>
+          <option value="birthday">Birthday</option>
+          <option value="private">Private Party</option>
+          <option value="other">Other</option>
+        </select>
+        <!-- Hidden input for custom category -->
+<div id="otherCategoryWrapper" style="display:none; margin-top:10px;">
+  <input type="text" id="otherCategory" name="otherCategory" placeholder="Enter your event type">
+</div>
+      </div>
+      
+      <!-- Row 2 -->
+      <div class="form-row">
+        <input type="number" placeholder="Years of Experience" required>
+        <input type="url" placeholder="Portfolio/Website Link">
+      </div>
+      
+      <!-- Row 3 -->
+      <div class="form-row">
+  
+    <input type="text" name="location" placeholder="Location/Service Area" required>
+    <input type="tel" name="phone" placeholder="Phone Number" 
+           pattern="[6-9]{1}[0-9]{9}" maxlength="10" required>
+</div>
+
+
+      
+      <!-- Row 4 -->
+      <textarea placeholder="Short Bio or Description"></textarea>
+      
+      <!-- Row 5 -->
+      <input type="file" accept=".jpg,.png,.pdf" required>
+      
+      <!-- Action Buttons -->
+      <div class="form-actions">
+        <button type="submit" class="submit-btn">Submit</button>
+        <button type="button" class="cancel-btn" onclick="closeModal()">Back</button>
+      </div>
+    </form>
+    <p id="verifySuccess" style="display:none; color:#4caf50;">
+      ✅ Organizer submitted for verification!
+    </p>
+  </div>
+</div>
+
+
+
+</body>
+</html>

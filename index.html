@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventEase</title>
+  <link rel="icon" href="logo2.png">
+
+  <!-- ✅ SEO (NEW) -->
+  <meta name="description" content="EventEase helps you find the best event organizers for weddings, parties, and corporate events.">
+  <meta name="keywords" content="event planning, wedding organizer, birthday planner, corporate events">
+  
+  <!-- ✅ CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- ✅ GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <!-- ✅ JS -->
+  <script src="script.js" defer></script>
+
+
+</head>
+
+<body>
+
+<!-- ✅ Scroll Progress Bar (NEW) -->
+<div id="progress-bar"></div>
+
+<!-- ✅ Back To Top -->
+<button id="backToTop">↑</button>
+
+<!-- ✅ NAVBAR -->
+<nav class="navbar">
+  <div class="logo">
+    <img src="images1/logo2.png" alt="EventEase Logo">
+  </div>
+
+  <!-- ✅ Mobile Toggle (NEW) -->
+  <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+
+  <ul class="menu">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="index.html#about">About</a></li>
+  <li><a href="index.html#how-it-works">How It Works</a></li>
+  <li><a href="index.html#why-us">Why Us</a></li>
+  <li><a href="events.html" class="active">Events</a></li>
+  <li><a href="index.html#gallery">Gallery</a></li>
+  <li><a href="index.html#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- ✅ VIDEO -->
+<video autoplay muted loop playsinline class="bg-video" poster="images/fallback.jpg">
+  <source src="images1/video1.mp4" type="video/mp4">
+</video>
+
+<div class="video-overlay"></div>
+
+<!-- ✅ HERO -->
+<section id="home" class="home-content">
+  <h1><em>Find Your Perfect Event Organizer</em></h1>
+  <p><em>Plan stress-free events with trusted organizers at your fingertips.</em></p>
+</section>
+
+<!-- ✅ ABOUT -->
+<!-- ✅ ABOUT SECTION -->
+  <section id="about" class="about-section">
+    <div class="about-left">
+      <h2>About EventEase</h2>
+      <p>EventEase is a simple, modern, and user‑friendly platform designed to help people find trusted event organizers for weddings, corporate events, birthdays, product launches, and community gatherings. Our goal is to make event planning stress‑free, transparent, and accessible for everyone.</p>
+      <p>We understand that planning an event can be overwhelming — finding the right organizer, managing budgets, and coordinating everything takes time and effort. EventEase brings all these solutions together in one clean and easy‑to‑use platform.</p>
+    </div>
+    <div class="about-right">
+      <div class="platform-box">
+        <img src="images/about.2.jpeg" alt="EventEase banner" class="platform-image">
+      </div>
+      <div class="mission-box">
+        <h4>Our Mission</h4>
+        <p>Our mission is to empower people with technology that simplifies event planning, reduces confusion, and helps create memorable experiences. We aim to connect users with reliable professionals and make event management effortless.</p>
+      </div>
+    </div>
+  </section>
+
+
+<!-- ✅ HOW IT WORKS -->
+<section id="how-it-works" class="how-section">
+  <h2>How It Works</h2>
+  <p class="subtitle">Plan your event in 3 simple steps</p>
+
+  <div class="how-container">
+
+    <!--LEFT SIDE-->
+    <div class="steps-left">
+      <div class="line"></div>
+
+      <div class="step active-step" data-step="1">
+      <div class="circle">1</div>
+      <div class="step-text">
+        <h3>Select Your Event Details</h3>
+          <p>Choose your event type, budget, location, and preferences to get started.</p>
+      </div>
+    </div>
+
+     <div class="step" data-step="2">
+      <div class="circle">2</div>
+      <div class="step-text">
+        <h3>Explore Event Organizers</h3>
+          <p>We provide a list of verified organizers matching your needs, complete with profiles and contact info.</p>
+      </div>
+    </div>
+
+    <div class="step" data-step="3">
+      <div class="circle">3</div>
+      <div class="step-text">
+        <h3>Connect & Plan Your Event</h3>
+          <p>Reach out to your chosen organizer and plan your event stress-free, without middlemen or hidden charges.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="steps-right">
+
+  <div class="slide active-slide">
+    <img src="images1/how.1.jpeg" alt="Step 1">
+  </div>
+
+  <div class="slide">
+    <img src="images1/how.2.webp" alt="Step 2">
+  </div>
+
+  <div class="slide">
+    <img src="images1/how.3.webp" alt="Step 3">
+  </div>
+
+</div>
+</section>
+
+
+<!-- ✅ WHY US -->
+<section id="why-us" class="why-us">
+  <h2 class="why-title">Why Choose EventEase?</h2>
+  <p class="subtitle why-subtitle">Find trusted event organizers easily, without stress or hidden steps.</p>
+
+  <div class="benefits">
+    <div class="benefit-card">
+      <i class="fas fa-gift"></i>
+      <h3>Curated Profiles</h3>
+      <p>Quickly access verified organizers with clear profiles and contact details.</p>
+    </div>
+
+    <div class="benefit-card">
+      <i class="fas fa-lightbulb"></i>
+      <h3>Time-Saving</h3>
+      <p>No more endless searching—get suitable matches in minutes.</p>
+    </div>
+
+    <div class="benefit-card">
+      <i class="fas fa-spa"></i>
+      <h3>Stress-Free Planning</h3>
+      <p>We connect you with professionals so you can focus on enjoying your event.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ EVENTS -->
+<section id="events-preview" class="events-preview">
+  <h2>Explore Event Categories</h2>
+<p class="subtitle">Find the right organizers for your special occasions</p>
+
+  <div class="preview-container">
+
+    <div class="preview-card">
+      <img src="images1/wedding.jpg" alt="Wedding Event">
+      <h3>Wedding Event</h3>
+    </div>
+
+    <div class="preview-card">
+      <img src="images/birthday.jpeg" alt="Birthday Party">
+      <h3>Birthday Party</h3>
+    </div>
+
+    <div class="preview-card">
+      <img src="images/corporate.jpeg" alt="Corporate Event">
+      <h3>Corporate Event</h3>
+    </div>
+
+  </div>
+
+  <!-- ✅ Explore Button -->
+  <div class="explore-btn-container">
+    <a href="events.html" class="explore-btn">Explore Our Events</a>
+  </div>
+</section>
+
+<!-- ✅ GALLERY -->
+<section id="gallery" class="event-gallery">
+  <h2>Gallery</h2>
+
+  <div class="gallery-scroll">
+      <img src="images/gal1.jpeg" alt="Wedding"> 
+      <img src="images/gal4.jpeg" alt="Baby Blessing Shower"> 
+      <img src="images/gal3.jpeg" alt="Private Party"> 
+      <img src="images/gal5.jpeg" alt="Corporate Event"> 
+      <img src="images/gal7.jpg" alt="Live Concert"> 
+      <img src="images/gal6.jpg" alt="Birthday Party">
+
+  </div>
+</section>
+
+
+<!-- ✅ FOOTER -->
+  <footer id="contact" class="contact-footer"> 
+    <div class="footer-logo">
+      <img src="images1/logo2.png" alt="EventEase Logo">
+    </div>
+    <div class="footer-brand"> 
+      <h2>EventEase</h2> 
+      <p>We Create Moments</p> 
+    </div> 
+    <div class="footer-social"> 
+      <p>Follow us on social networks</p> 
+      <div class="social-icons"> 
+        <a href="https://facebook.com/yourpage" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> 
+        <a href="https://instagram.com/yourpage" aria-label="Instagram"><i class="fab fa-instagram"></i></a> 
+        <a href="https://twitter.com/yourpage" aria-label="Twitter"><i class="fab fa-twitter"></i></a> 
+      </div> 
+    </div> 
+    <div class="footer-contact"> 
+      <p>📍 Pune, Maharashtra</p> 
+      <p>📞 +91-9876543210</p> 
+      <a href="https://wa.me/919876543210" aria-label="WhatsApp">💬 Chat on WhatsApp</a>
+    </div> 
+    <div class="footer-policy"> 
+      <a href="#">Privacy Policy</a> 
+    </div> 
+  </footer> 
+
+  <!-- ✅ Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+ 

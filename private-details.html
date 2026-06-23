@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Event - EventEase</title>
+
+  <!-- ✅ Internal CSS -->
+<link rel="stylesheet" href="live-details.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- ✅ External JS -->
+  <script src="music-details.js" defer></script>
+
+  <style>
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+    .logo img {
+  height: 70px;
+  transition: transform 0.4s ease;
+}
+
+.logo img:hover {
+  transform: rotate(-5deg) scale(1.1);
+}
+    /* Hero Banner Overlay */
+/* Hero Banner Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.637);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: 2.5em;
+  color: #ffcc00;
+  text-shadow: 0 0 6px #eba235;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: titleAnim 1s ease forwards;
+}
+
+/* HERO IMAGE ANIMATION */
+.hero-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+
+  opacity: 0;
+  transform: translateX(-100px);
+  animation: slideFromLeft 1.5s ease forwards;
+}
+
+/* Animation */
+@keyframes slideFromLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-subtitle {
+  margin-top: 10px;
+  font-size: 1.2em;
+
+  opacity: 0;
+  transform: translateY(30px);
+  animation: subtitleAnim 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes titleAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtitleAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: #ffcc00;
+  width: 0%;
+  z-index: 9999;
+}
+/* NAVBAR FIX */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  /*background: rgba(0,0,0,0.8);*/
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent;
+  transition: 0.3s;
+}
+.navbar.scrolled {
+  background: #000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+  /* Navbar + Footer logo same animation */
+.logo img,
+.footer-logo img {
+  height: 60px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* 🔥 SAME hover animation */
+.logo img:hover,
+.footer-logo img:hover {
+  transform: scale(1.2) rotate(-5deg);
+  filter: drop-shadow(0 0 12px #ffcc00);
+}
+
+/* Menu */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+   position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+/* 🔥 Underline effect */
+.menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;   /* distance below text */
+  width: 0%;
+  height: 2px;
+  background: #ffcc00;
+  transition: width 0.3s ease;
+}
+.menu li a:hover::after {
+  width: 100%;
+}
+.menu li a:hover {
+  color: #ffcc00;
+}
+
+
+.contact-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 40px;
+  background: #000;
+  color: #fff;
+  gap: 30px;
+  border-top: 1px solid #222;
+}
+
+.footer-logo img {
+  height: 60px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.footer-logo img:hover {
+  transform: scale(1.2) rotate(-5deg);
+  filter: drop-shadow(0 0 10px #ffcc00);
+}
+
+.footer-brand h2 {
+  margin: 0;
+  color: #ffcc00;
+}
+
+.footer-brand p {
+  margin-top: 5px;
+  color: #ccc;
+}
+
+.footer-social p {
+  margin-bottom: 10px;
+}
+
+
+.footer-contact a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 20px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.footer-policy a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-policy a:hover {
+  color: #ffcc00;
+}
+
+  .budget-row:hover {
+    background: rgba(255, 204, 0, 0.1);
+    transform: scale(1.01);
+    transition: 0.3s;
+  }
+
+  .about-section {
+  padding: 60px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+
+.about-title {
+  color: #ffcc00;
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 6px #f99500;
+}
+
+.about-text {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: 16px;
+  color: #ddd;
+}
+
+/* When visible */
+.about-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 20px;
+  text-align: center;
+  background: #000;
+  color: #fff;
+}
+.gallery-section::before {
+  content: "";
+  position: absolute;
+
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+
+  background: conic-gradient(
+    from 0deg,
+    #ff9800,
+    #ffd700,
+    #ff9800,
+    #000,
+    #ff9800
+  );
+
+  animation: rotateBg 15s linear infinite;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+
+@keyframes rotateBg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.gallery-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85); /* dark overlay */
+  backdrop-filter: blur(80px);
+  z-index: 0;
+}
+
+.gallery-section * {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-title {
+  color: #ffcc00;
+  font-size: 2.2em;
+  margin-bottom: 30px;
+  text-shadow: 0 0 6px #ff9900;
+}
+
+/* Layout */
+.gallery-slider {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scrollGallery 25s linear infinite;
+  align-items: center;
+}
+
+/* CENTER (MAIN FOCUS 🔥) */
+.arc-item.center {
+  transform: rotateY(0deg) translateZ(80px) scale(1.1);
+  z-index: 10;
+}
+
+/* Hover effect */
+.arc-item:hover {
+  transform: scale(1.15) !important;
+  z-index: 20;
+}
+
+/* Base card */
+.gallery-img {
+  width: 180px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 20px;
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+
+.gallery-wrapper {
+  overflow: hidden;
+  width: 100%;
+  perspective: 1200px;
+  padding: 50px 0;
+}
+
+.gallery-arc-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  transition: transform 0.6s ease;
+  
+}
+
+.arc-item {
+  width: 180px;
+  height: 260px;
+  border-radius: 20px;
+  transition: all 0.6s ease;
+}
+
+/* Hover effect (extra 🔥) */
+.gallery-img:hover {
+  transform: scale(1.1);
+}
+
+/* 🔥 Auto Scroll Animation */
+@keyframes scrollGallery {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* When visible */
+.gallery-img.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.budget-section {
+  background: #111;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.budget-title {
+  font-size: 2.2em;
+  color: #ffcc00;
+  margin-bottom: 40px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+
+  font-size: 2.2em;
+  /*margin-bottom: 30px;*/
+  text-shadow: 0 0 6px #ff9900;
+}
+
+.budget-table {
+  max-width: 1000px;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(255,204,0,0.2);
+}
+
+/* Rows */
+.budget-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 15px;
+  color: #ccc;
+  border-bottom: 1px solid #333;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.6s ease;
+}
+
+/* Header */
+.budget-row.header {
+  background: linear-gradient(90deg, #ffcc00, #ff9900);
+  color: #000;
+  font-weight: bold;
+}
+
+/* Highlight */
+.highlight {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+/* Hover effect 🔥 */
+.budget-row:not(.header):hover {
+  background: rgba(255, 204, 0, 0.1);
+  transform: scale(1.02);
+}
+
+/* When visible */
+.budget-section.show .budget-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.budget-row.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.included-section {
+  background: #0d0d0d;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.included-title {
+  font-size: 2.2em;
+  color: #ffcc00;
+  /*text-shadow: 0 0 5px #ffcc00, 0 0 15px #ff9900;*/
+  margin-bottom: 40px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+  text-shadow: 0 0 6px #ff9900;
+}
+
+.included-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Cards */
+.included-card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 0 15px rgba(255,204,0,0.2);
+  cursor: pointer;
+  overflow: hidden;
+
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.6s ease;
+}
+
+/* Text */
+.included-card h3 {
+  margin-top: 0;
+  color: #ffcc00;
+}
+
+.included-card p {
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* Hover 🔥 */
+.included-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255,204,0,0.5);
+}
+
+/* Visible */
+.included-section.show .included-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.included-card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.organizer-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.organizer-title {
+  color: #ffcc00;
+  font-size: 2em;
+  margin-bottom: 30px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+  text-shadow: 0 0 6px #ff9900;
+}
+
+.organizer-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Cards */
+.organizer-card {
+  background: #333;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+font-size: 14px;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.6s ease;
+}
+
+/* Text */
+.organizer-card h3 {
+  color: #ff9900;
+}
+
+/* Hover 🔥 */
+.organizer-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 20px rgba(255,153,0,0.6);
+}
+
+/* Note */
+.organizer-note {
+  margin-top: 20px;
+  color: #ccc;
+  font-size: 0.9em;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s;
+}
+
+/* Visible */
+.organizer-section.show .organizer-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.organizer-card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.organizer-section.show .organizer-note {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.included-card:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 191, 0, 0.6);
+}
+
+.included-card h3 {
+  transition: 0.3s;
+}
+
+.included-card:hover h3 {
+  letter-spacing: 1px;
+}
+
+.coverflow {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coverflow:hover .cover-item {
+  filter: blur(2px);
+}
+
+.coverflow .cover-item:hover {
+  filter: blur(0);
+}
+
+.cover-item {
+  position: absolute;
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+/* 🔥 Hover zoom */
+.cover-item:hover {
+  filter: brightness(1.1);
+  z-index: 200 !important;
+}
+
+.footer-social p {
+  margin-bottom: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 20px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ffcc00;
+  transform: scale(1.2);
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 12px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ffcc00;
+  transform: scale(1.2);
+}
+
+/* Contact */
+.footer-contact p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+.footer-contact a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive 🔥 */
+@media (max-width: 768px) {
+  .contact-footer {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
+ .profile-img {
+  width: 100px;        /* same size for all */
+  height: 100px;       /* must be equal */
+  border-radius: 50%;  /* perfect circle */
+  object-fit: cover;   /* prevents distortion */
+  display: block;
+  margin: 0 auto 10px; /* center + spacing */
+}
+
+.profile-img:hover {
+  transform: scale(1.1);
+}
+.img-container img {
+  width: 40%;
+  height: 50%;
+  object-fit: cover;
+  transition: transform 0.4s ease; /* smooth animation */
+   display: flex;
+  justify-content: center;
+}
+
+.img-container:hover img {
+  transform: scale(1.1); /* zoom effect */
+}
+</style>
+
+
+  
+</head>
+<body style="margin:0; font-family:Arial, sans-serif; background:#111; color:#fff;">
+
+  <!-- ✅ NAVBAR (ADD HERE) -->
+   <div id="progress-bar"></div>
+<nav class="navbar">
+  <div class="logo">
+    <img src="images1/logo2.png" alt="EventEase Logo">
+  </div>
+
+  <ul class="menu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+  <!-- Hero Banner -->
+  <section style="position:relative; text-align:center;" class="hero-img">
+    <img src="images1/pri-3.jpg" alt="Music Event Banner" class="hero-img">
+    <div class="hero-overlay">
+      <h1 class="hero-title">Private Parties</h1>
+      <p class="hero-subtitle">Exclusive gatherings tailored to your style, privacy, and comfort.</p>
+    </div>
+
+
+</section>
+
+  <!-- Event Info -->
+ <section class="about-section">
+  <h2 class="about-title">about the event</h2>
+  <p class="about-text">
+       Our private parties are designed for intimate celebrations with close friends, family, or colleagues. From elegant décor and gourmet catering to entertainment and guest management, we ensure your event remains personal, stylish, and unforgettable.  
+  </p>
+</section>
+
+  <!-- Gallery -->
+  <!-- Gallery -->
+  <section class="gallery-section"> 
+  <h2 class="gallery-title">Event Gallery</h2> 
+
+
+
+  <div class="coverflow" id="coverflow">
+    <img src="images1/pri-8.jpeg" class="cover-item">
+    <img src="images1/pri-1.jpeg" class="cover-item">
+    <img src="images1/pri-9.jpeg" class="cover-item">
+    <img src="images1/pri-2.jpeg" class="cover-item">
+    <img src="images1/pri-3.jpg" class="cover-item">
+    <img src="images1/pri-7.jpeg" class="cover-item">
+    <img src="images1/pri-4.jpeg" class="cover-item">
+    <img src="images1/pri-6.jpeg" class="cover-item">
+    <img src="images1/pri-5.jpeg" class="cover-item">
+    
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== BUDGET SECTION ===== -->
+<section class="budget-section">
+
+  <h2 class="budget-title">
+    Concert Planning Budget
+  </h2>
+
+  <div class="budget-table">
+
+    <!-- Header -->
+    <div class="budget-row header">
+  <div>Min Budget</div>
+  <div>Max Budget</div>
+  <div>Organizer Fee</div>
+  <div>Production Includes</div>
+  <div>Crew Size</div>
+</div>
+
+   <!-- Row 1 -->
+<div class="budget-row">
+  <div>₹30,000</div>
+  <div>₹80,000</div>
+  <div class="highlight">₹8,000</div>
+  <div>Basic Setup + Music + Snacks</div>
+  <div>2-3 Members</div>
+</div>
+
+<!-- Row 2 -->
+<div class="budget-row">
+  <div>₹80,000</div>
+  <div>₹2,00,000</div>
+  <div class="highlight">₹20,000</div>
+  <div>Theme Decor + DJ + Catering</div>
+  <div>4-5 Members</div>
+</div>
+
+<!-- Row 3 -->
+<div class="budget-row">
+  <div>₹2,00,000</div>
+  <div>₹5,00,000</div>
+  <div class="highlight">₹45,000</div>
+  <div>Premium Setup + Lighting + Bar Setup</div>
+  <div>6-8 Members</div>
+</div>
+
+<!-- Row 4 -->
+<div class="budget-row">
+  <div>₹5,00,000</div>
+  <div>₹10,00,000</div>
+  <div class="highlight">₹90,000</div>
+  <div>Luxury Venue + DJ + Full Catering</div>
+  <div>10-12 Members</div>
+</div>
+
+<!-- Row 5 -->
+<div class="budget-row">
+  <div>₹10,00,000</div>
+  <div>₹25,00,000+</div>
+  <div class="highlight">₹1,80,000</div>
+  <div>Elite Private Party + Full Production</div>
+  <div>15+ Members</div>
+</div>
+
+  </div>
+</section>
+
+<!-- ===== WHAT'S INCLUDED ===== -->
+<section class="included-section">
+
+  <h2 class="included-title">What's Included</h2>
+
+  <div class="included-container">
+
+    <div class="included-card">
+  <h3>🎉 Theme Decoration</h3>
+  <p>Stylish party themes with premium decor, lighting, and customized setups.</p>
+</div>
+
+<div class="included-card">
+  <h3>🎧 DJ & Music Setup</h3>
+  <p>Professional DJ, sound system, and curated playlists for an energetic vibe.</p>
+</div>
+
+<div class="included-card">
+  <h3>🍽️ Catering & Beverages</h3>
+  <p>Delicious food, snacks, and beverage arrangements for all guests.</p>
+</div>
+
+<div class="included-card">
+  <h3>🍸 Bar Setup (Optional)</h3>
+  <p>Fully managed bar counter with bartenders and premium drink options.</p>
+</div>
+
+<div class="included-card">
+  <h3>💡 Lighting & Party Effects</h3>
+  <p>LED lights, strobes, and special effects to enhance the party atmosphere.</p>
+</div>
+
+<div class="included-card">
+  <h3>📸 Photography & Videography</h3>
+  <p>Capture your party moments with professional photography services.</p>
+</div>
+
+<div class="included-card">
+  <h3>👮 Security & Guest Management</h3>
+  <p>Trained staff for smooth entry, security, and guest handling.</p>
+</div>
+
+<div class="included-card">
+  <h3>🏨 Venue Selection & Setup</h3>
+  <p>Private villas, lounges, rooftops, or banquet spaces with complete setup.</p>
+</div>
+
+  </div>
+
+</section>
+
+
+
+  <section class="organizer-section">
+
+  <h2 class="organizer-title">Organizer Details</h2>
+
+  <div class="organizer-container">
+
+    <div class="organizer-card">
+      <div class="img-container">
+      <img src="images/org.22.jpeg" alt="Organizer" class="profile-img">
+  <h3>Happy Moments Planners</h3><br>
+  <p>Birthday parties & private celebrations</p><br>
+  <p>🌟 7+ years | 300+ events</p><br>
+  <p><strong>Contact:</strong></p>
+  <p>📧 info@happymoments.com</p>
+  <p>📞 +91 98765 43210</p><br><br>
+  <p><em>“Making every private party unforgettable and fun.”</em></p>
+</div>
+    </div>
+
+<div class="organizer-card">
+  <div class="img-container">
+  <img src="images/org.9.jpeg" alt="Organizer" class="profile-img">
+  <h3>Joyful Moments</h3><br>
+  <p>Anniversaries & intimate gatherings</p><br>
+  <p>🌟 8+ years | 200+ events</p><br>
+  <p><strong>Contact:</strong></p>
+  <p>📧 info@joyfulmoments.com</p>
+  <p>📞 +91 98765 43210</p><br><br>
+  <p><em>“Adding joy and elegance to your special evenings.”</em></p>
+</div>
+</div>
+
+<div class="organizer-card">
+  <div class="img-container">
+  <img src="images/org.6.jpeg" alt="Organizer" class="profile-img">
+  <h3>Blissful Gatherings</h3><br>
+  <p>Luxury décor & themed private parties</p><br>
+  <p>🌟 6+ years | 150+ events</p><br>
+  <p><strong>Contact:</strong></p>
+  <p>📧 blissful@events.com</p>
+  <p>📞 +91 99876 54321</p><br><br>
+  <p><em>“Transforming private occasions into cherished memories.”</em></p>
+</div>
+</div>
+
+<div class="organizer-card">
+  <div class="img-container">
+  <img src="images/org.7.jpeg" alt="Organizer" class="profile-img">
+  <h3>Little Joys Events</h3><br>
+  <p>Creative party games & photography</p><br>
+  <p>🌟 4+ years | 90+ events</p><br>
+  <p><strong>Contact:</strong></p>
+  <p>📧 littlejoys@events.com</p>
+  <p>📞 +91 98765 43211</p><br><br>
+  <p><em>“Capturing laughter and fun at every private party.”</em></p>
+</div>
+</div>
+
+<div class="organizer-card">
+  <div class="img-container">
+  <img src="images/org.25.jpeg" alt="Organizer" class="profile-img">
+  <h3>Midnight Memories</h3><br>
+  <p>Exclusive birthday bashes & late-night parties</p><br>
+  <p>🌟 8+ years | 250+ events</p><br>
+  <p><strong>Contact:</strong></p>
+  <p>📧 midnight@memories.com</p>
+  <p>📞 +91 91234 56781</p><br><br>
+  <p><em>“Turning nights into unforgettable celebrations.”</em></p>
+</div>
+</div>
+
+<div class="organizer-card">
+  <div class="img-container">
+  <img src="images/org.21.jpeg" alt="Organizer" class="profile-img">
+  <h3>Sparkle Nights</h3><br>
+  <p>Anniversaries, themed dinners & private soirées</p><br>
+  <p>🌟 6+ years | 180+ events</p><br>
+  <p><strong>Contact:</strong></p>
+  <p>📧 sparkle@nights.com</p>
+  <p>📞 +91 92345 67892</p><br><br>
+  <p><em>“Adding sparkle to every intimate gathering.”</em></p>
+</div>
+</div>
+
+<div class="organizer-card">
+  <div class="img-container">
+  <img src="images/org.16.jpeg" alt="Organizer" class="profile-img">
+  <h3>Velvet Evenings</h3><br>
+  <p>Luxury décor & private cocktail parties</p><br>
+  <p>🌟 10+ years | 320+ events</p><br>
+  <p><strong>Contact:</strong></p>
+  <p>📧 velvet@evenings.com</p>
+  <p>📞 +91 93456 78913</p><br><br>
+  <p><em>“Crafting elegant evenings with a touch of class.”</em></p>
+</div>
+</div>
+
+  <div class="organizer-card">
+  <div class="img-container">
+  <img src="images/orgb.26.jpeg" alt="Organizer" class="profile-img">
+  <h3>Golden Moments</h3><br>
+  <p>Milestone birthdays & anniversary celebrations</p><br>
+  <p>🌟 7+ years | 200+ events</p><br>
+  <p><strong>Contact:</strong></p>
+  <p>📧 golden@moments.com</p>
+  <p>📞 +91 94567 12347</p><br><br>
+  <p><em>“Celebrating life’s milestones with warmth and grandeur.”</em></p>
+</div>
+</div>
+
+
+  </div>
+
+  <p class="organizer-note">
+    EventEase connects you with trusted organizers according to your budget. We act as a middleman — not a direct booking service.
+  </p>
+
+</section>
+
+<!-- ✅ FOOTER (ADD HERE) -->
+<footer class="contact-footer"> 
+    <div class="footer-logo">
+      <img src="images1/logo2.png" alt="EventEase Logo">
+    </div>
+    <div class="footer-brand"> 
+      <h2>EventEase</h2> 
+      <p>We Create Moments</p> 
+    </div> 
+    <div class="footer-social"> 
+      <p>Follow us on social networks</p> 
+      <div class="social-icons"> 
+        <a href="https://facebook.com/yourpage" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a> 
+        <a href="https://instagram.com/yourpage" aria-label="Instagram"><i class="fab fa-instagram"></i></a> 
+        <a href="https://twitter.com/yourpage" aria-label="Twitter"><i class="fab fa-twitter"></i></a> 
+      </div> 
+    </div> 
+    <div class="footer-contact"> 
+      <p>📍 Pune, Maharashtra</p> 
+      <p>📞 +91-9876543210</p> 
+      <a href="https://wa.me/919876543210" aria-label="WhatsApp">💬 Chat on WhatsApp</a>
+    </div> 
+    <div class="footer-policy"> 
+      <a href="#">Privacy Policy</a> 
+    </div> 
+  </footer> 
+
+</body> 
+</html>
